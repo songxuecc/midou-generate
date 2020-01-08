@@ -9,8 +9,10 @@ const defaultCompnentDir = resolve(__dirname, "../templates")
 const generate = async (program, { cwd }) => {
   try {
     const type = program.opts()
-    const [ targetName, targetFolder, originalDirectory ] = program.args
+    const [ targetName,  originalDirectory,targetFolder, ] = program.args
 
+
+    console.log(targetFolder)
     // 如果给要复制的源路径就添加源路径
     // const originalDirectory = false
     const scanComponentDirectorys = [ defaultCompnentDir ]
