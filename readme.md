@@ -1,6 +1,8 @@
 ## scripts
 ```javascript
+
  midou-generate create component [name] [originalDirectory] [path] // 快速生成组建
+
  midou-generate create page [name] [originalDirectory] [path]  // 快速生成页面
 
 ```
