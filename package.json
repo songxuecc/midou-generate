@@ -25,6 +25,9 @@
   "scripts": {
     "start": "babel ./src  --out-dir ./lib && node ./bin/index.js create component Demo"
   },
+  "bin": {
+    "midou-generate": "bin/index.js"
+  },
   "devDependencies": {
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",

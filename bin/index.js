@@ -4,7 +4,7 @@
  * @Author: 祢豆
  * @Date: 2020-01-07 17:33:30
  * @Last Modified by: 祢豆
- * @Last Modified time: 2020-01-08 18:46:53
+ * @Last Modified time: 2020-01-08 19:06:38
  */
 const program = require("commander")
 const generate = require("../lib/index").default
