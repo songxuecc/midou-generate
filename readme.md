@@ -1,3 +1,10 @@
+# midou-generate
+
+## install
+```javascript
+npm install midou-generate -g
+```
+
 ## scripts
 ```javascript
 
