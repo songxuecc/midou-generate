@@ -3,9 +3,9 @@
  create [component] [name] [originalDirectory] [path]
 ```
 
-| 参数名      | 第含义一列     | 
+| 字段      | 类型	     | 必填	     | 描述	     | 
 | ---------- | :-----------:  | 
-| component     | 类型     | 
-| name     | 要命名的名称     | 
-| originalDirectory     | 要复制的源文件路径     | 
-| path     | 要复制的最后地址     | 
+| type     | 'component' / 'page'      |  是     |  要复制的类型     | 
+| name     | string      |  是     | 要命名的名称     | 
+| originalDirectory | string      |  非     |   要复制的源文件路径     | 
+| path     |  string      |  非     |  要复制的最后地址     | 
