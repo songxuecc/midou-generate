@@ -1,0 +1,34 @@
+{
+  "name": "generate-react-template",
+  "version": "1.0.0",
+  "description": "generate react component template",
+  "main": "./src/index.js",
+  "license": "MIT",
+  "author": {
+    "name": "midou",
+    "email": "577281375@qq.com",
+    "url": "https://github.com/songxuecc/generate-react-template.git"
+  },
+  "dependencies": {
+    "@babel/helper-module-imports": "^7.7.4",
+    "@babel/plugin-proposal-export-default-from": "^7.7.4",
+    "@babel/polyfill": "^7.7.0",
+    "chalk": "^3.0.0",
+    "fs-extra": "^8.1.0",
+    "glob": "^7.1.6",
+    "inquirer": "^7.0.3",
+    "inquirer-autocomplete-prompt": "^1.0.1",
+    "list-react-files": "^0.2.0",
+    "lodash": "^4.17.15",
+    "ora": "^4.0.3"
+  },
+  "scripts": {
+    "start": "babel ./src  --out-dir ./lib && node ./bin/index.js create component Demo",
+    "publish":"npm publish --registry https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7"
+  }
+}
