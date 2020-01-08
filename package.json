@@ -1,6 +1,6 @@
 {
   "name": "midou-generate",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "generate react component template",
   "main": "./src/index.js",
   "license": "MIT",
