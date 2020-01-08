@@ -1,6 +1,6 @@
 {
   "name": "midou-generate",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "generate react component template",
   "main": "./src/index.js",
   "license": "MIT",
@@ -23,8 +23,7 @@
     "ora": "^4.0.3"
   },
   "scripts": {
-    "start": "babel ./src  --out-dir ./lib && node ./bin/index.js create component Demo",
-    "publish":"npm publish --registry https://registry.npmjs.org/"
+    "start": "babel ./src  --out-dir ./lib && node ./bin/index.js create component Demo"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.7",
