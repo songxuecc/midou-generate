@@ -8,4 +8,4 @@
 | type     | 'component' / 'page'      |  是     |  要复制的类型     | 
 | name     | string      |  是     | 要命名的名称     | 
 | originalDirectory | string      |  非     |   要复制的源文件路径     | 
-| path     |  string      |  非     |  要复制的最后地址     | 
+| path     |  string      |  非     |  要复制的目标地址     | 
