@@ -1,6 +1,6 @@
 import { basename, dirname, isAbsolute, join, relative, resolve } from "path"
 import { camelCase, upperFirst } from "lodash"
-import { gray } from "chalk"
+import { gray, red } from "chalk"
 import glob from "glob"
 import listReactFiles from "list-react-files"
 import { copy, move, readFileSync, writeFileSync } from "fs-extra"
@@ -64,12 +64,8 @@ export const replaceContents = (contents, oldName, newName) =>
     `$1$3${newName}$2$4`
   )
 
-
-export const replaceLessImport = (contents,newContent) =>
-  contents.replace(
-    new RegExp(/@import\s+"[./\-\w]+";/),
-    `@import "${newContent}";`
-  )
+export const replaceLessImport = (contents, newContent) =>
+  contents.replace(new RegExp(/@import\s+"[./\-\w]+";/), `@import "${newContent}";`)
 
 // 更换组建名称
 // 更换 css 路径 先找到 src
@@ -79,16 +75,16 @@ export const replicate = async (originalPath, answers, workingDir = process.cwd(
   const absolutePath = isAbsolute(originalPath) ? originalPath : join(workingDir, originalPath)
   const promises = []
   if (isSingleFile(originalPath)) {
-    //   const files = getFiles(dirname(absolutePath), originalName)
-    //   files.forEach(async file => {
-    //     const filename = basename(file).replace(originalName, answers.name)
-    //     const destinationPath = join(workingDir, answers.folder, filename)
-    //     const promise = copy(file, destinationPath).then(() => {
-    //       const contents = readFileSync(destinationPath).toString()
-    //       writeFileSync(destinationPath, replaceContents(contents, originalName, answers.name))
-    //     })
-    //     promises.push(promise)
-    //   })
+    const files = getFiles(dirname(absolutePath), originalName)
+    files.forEach(async file => {
+      const filename = basename(file).replace(originalName, answers.name)
+      const destinationPath = join(workingDir, answers.folder, filename)
+      const promise = copy(file, destinationPath).then(() => {
+        const contents = readFileSync(destinationPath).toString()
+        writeFileSync(destinationPath, replaceContents(contents, originalName, answers.name))
+      })
+      promises.push(promise)
+    })
   } else {
     const destinationPath = join(workingDir, answers.folder, answers.name)
     await copy(dirname(absolutePath), destinationPath)
@@ -97,19 +93,21 @@ export const replicate = async (originalPath, answers, workingDir = process.cwd(
       let contents = readFileSync(file).toString()
       // 如果是css文件 则更换 less 引入
       if (contents.indexOf("@import") > -1) {
-        const { find } = new FindFile()
-        const defLessPath = await find(process.cwd(), "def.less")
-        if(defLessPath){
-          const relativePath = relative(resolve(file,'../'), defLessPath)
-          contents = replaceLessImport(contents,relativePath)
+        try {
+          const { find } = new FindFile()
+          const findPath = process.cwd().split('/src')[0]
+          const defLessPath = await find(findPath, "def.less")
+          if(defLessPath){
+            const relativePath = relative(resolve(file,'../'), defLessPath)
+            contents = replaceLessImport(contents,relativePath)
+          }
+        } catch (e) {
+          red(`[FindFile] find def.less error : ${e}`)
         }
       }
       const renamedPath = join(dirname(file), basename(file).replace(originalName, answers.name))
       writeFileSync(file, replaceContents(contents, originalName, answers.name))
-      if(file !== renamedPath){
-        console.log(file,'file')
-        console.log(renamedPath,'renamedPath')
-
+      if (file !== renamedPath) {
         const promise = move(file, renamedPath)
         promises.push(promise)
       }

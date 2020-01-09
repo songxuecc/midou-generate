@@ -1,6 +1,6 @@
 {
   "name": "midou-generate",
-  "version": "1.0.11",
+  "version": "1.0.16",
   "description": "generate react component template",
   "main": "./src/index.js",
   "license": "MIT",
@@ -26,7 +26,8 @@
   },
   "scripts": {
     "start": "babel ./src  --out-dir ./lib && node ./bin/cli.js create component Demo ./add",
-    "vision": "babel ./src  --out-dir ./lib && node ./bin/cli.js -v"
+    "vision": "babel ./src  --out-dir ./lib && node ./bin/cli.js -v",
+    "pub":"babel ./src  --out-dir ./lib && npm publish"
   },
   "bin": {
     "midou-generate": "bin/cli.js"
