@@ -30,6 +30,8 @@ const generate = async (program, { cwd }) => {
       targetFolder,
       originalFolder,
     })
+console.log("kjhkhkjhkjh")
+console.log(answers,'answers')
     replicate(originalCompnentPath,answers)
   } catch (e) {
     red(`[generate] error: ${e.message}`)
