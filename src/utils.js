@@ -77,7 +77,6 @@ export const replaceContentsHasLowerCase = (contents, oldName, newName) =>
 export const replaceLessImport = (contents, newContent) =>
   contents.replace(new RegExp(/@import\s+"[./\-\w]+";/), `@import "${newContent}";`)
 
-
 // 时间格式化
 Date.prototype.Format = function(fmt) {
   var o = {
@@ -100,12 +99,16 @@ Date.prototype.Format = function(fmt) {
   return fmt
 }
 
-
 // 添加文件头
 const addFileHeader = content => {
+  console.log(content,'content')
+
+  // 如果没有文件头就添加文件头
+  // 有文件头就替换文件头
+  const reg = new RegExp(/\/\*\n\s\*\s+@Author([\w\W]*)\* @Last Modified time([\w\W]*)\n\*\//)
+
   const userName = gitUserName()
-  const fileHeader = `
-/*
+  const fileHeader = `/*
 * @Author: ${userName}
 * @ModuleName: undefined
 * @Date: ${new Date().Format("yyyy-MM-dd HH:mm:s")}
@@ -114,6 +117,9 @@ const addFileHeader = content => {
 */
 
 `
+  if (reg.test(content)) {
+    return contents.replace(reg, `${fileHeader}`)
+  }
   return fileHeader + content
 }
 
