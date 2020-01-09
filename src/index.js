@@ -8,8 +8,10 @@ const defaultCompnentDir = resolve(__dirname, "../templates")
 
 const generate = async (program, { cwd }) => {
   try {
-    const type = program.opts()
+    const opts = program.opts()
+    console.log(opts.create)
     const [ targetName,  originalDirectory,targetFolder, ] = program.args
+    console.log(program.args)
 
     // 如果给要复制的源路径就添加源路径
     // const originalDirectory = false
