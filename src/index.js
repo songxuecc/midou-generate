@@ -7,6 +7,7 @@ import { componentAnswers } from "./answers"
 const defaultCompnentDir = resolve(__dirname, "../templates")
 
 const generate = async (program, { cwd }) => {
+
   try {
     const opts = program.opts()
     console.log(opts.create)

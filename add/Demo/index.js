@@ -1,12 +1,3 @@
-
-/*
-* @Author: 祢豆
-* @ModuleName: undefined
-* @Date: 2020-01-09
-* @Last Modified by: 祢豆
-* @Last Modified time: 2020-01-09
-*/
-
 /*
  * @Author: 祢豆
  * @ModuleName: 2020-01-09 11:26:03

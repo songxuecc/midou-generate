@@ -1,12 +1,3 @@
-
-/*
-* @Author: 祢豆
-* @ModuleName: undefined
-* @Date: 2020-01-09
-* @Last Modified by: 祢豆
-* @Last Modified time: 2020-01-09
-*/
-
 /*
  * @Author: 祢豆
  * @ModuleName: 2020-01-09 11:26:03
@@ -21,15 +12,15 @@ import PropTypes from "prop-types"
 
 import "./index.less"
 
-export const Demo = (props) => {
+export const S = (props) => {
   return (
     <div>button</div>
   )
 };
 
-Demo.defaultProps = {
+S.defaultProps = {
 }
-Demo = {
+S = {
 }
 
-export default Demo;
+export default S;
