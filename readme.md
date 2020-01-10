@@ -30,7 +30,7 @@ npm install midou-generate -g
 
 
 ## todo 
-添加 eslint
-添加 test
-添加 ts
-添加 page 的复制粘贴模版
+添加 eslint  
+添加 test  
+添加 ts  
+添加 page 的复制粘贴模版  
