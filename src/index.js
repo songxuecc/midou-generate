@@ -1,21 +1,21 @@
 import { join, relative, isAbsolute, resolve } from "path"
-import { red } from "chalk"
-import { getComponentName, getComponentFolder , replicate } from "./utils"
+import { camelCase, upperFirst } from "lodash"
+import { red, white } from "chalk"
+import { getComponentName, getComponentFolder } from "./utils"
+import replicateComponent from "./replicateComponent"
+import replicatePage from "./replicatePage"
+
 import scan from "./scan"
 import { componentAnswers } from "./answers"
-
+const log = console.log
 const defaultCompnentDir = resolve(__dirname, "../templates")
 
 const generate = async (program, { cwd }) => {
-
   try {
     const opts = program.opts()
-    console.log(opts.create)
-    const [ targetName,  originalDirectory,targetFolder, ] = program.args
-    console.log(program.args)
-
+    const [ targetName, originalDirectory, targetFolder ] = program.args
+    
     // 如果给要复制的源路径就添加源路径
-    // const originalDirectory = false
     const scanComponentDirectorys = [ defaultCompnentDir ]
     if (originalDirectory) scanComponentDirectorys.push(originalDirectory)
     const originalCompnentPath = await scan(scanComponentDirectorys)
@@ -33,11 +33,14 @@ const generate = async (program, { cwd }) => {
       targetFolder,
       originalFolder,
     })
-    replicate(originalCompnentPath,answers)
+    if(opts.create.toLowerCase() === 'component'){
+      replicateComponent(originalCompnentPath, answers)
+    }else{
+      replicatePage(originalCompnentPath, answers)
+    }
   } catch (e) {
-    red(`[generate] error: ${e.message}`)
+    log(red.bold(`[generate] `) + white(`${e}`))
   }
 }
 
 export default generate
- 
